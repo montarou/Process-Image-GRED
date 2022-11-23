@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.scijava</groupId>
+    <artifactId>pom-scijava</artifactId>
+    <version>31.1.0</version>
+  </parent>
+  
+  <groupId>com.LPC.Clermont</groupId>
+  <artifactId>Process-Image-GRED</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Open-Image-GRED</name>
+  <description>test et ouverture Image GRED</description>
+  
+  <properties>
+		<package-name>LPC.Clermont.imagej</package-name>                      <!-- Changed: Your project package prefix here -->
+		<main-class>LPC.Clermont.imagej.Process_Pixels</main-class>           <!-- Changed: Your project main class here, or delete for none -->
+		<license.licenseName>cc0</license.licenseName>                        <!-- Changed: Your license-maven-plugin license code here -->
+		<license.copyrightOwners>LPC.Clermont, Inc.</license.copyrightOwners> <!-- Changed: Your license-maven-plugin license code here -->
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.imagej</groupId>
+			<artifactId>ij</artifactId>
+		</dependency>
+	</dependencies>
+	
+  
+</project>
