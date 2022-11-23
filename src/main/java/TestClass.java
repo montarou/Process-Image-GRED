@@ -1,4 +1,7 @@
-
+/*
+ * Programme Test pour ouvrir un stack GRED
+ * GM 23/11/2022
+ */
 
 import javax.swing.JOptionPane;
 
