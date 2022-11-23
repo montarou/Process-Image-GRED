@@ -5,9 +5,6 @@
 
 import java.io.File;
 
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-
 import ij.IJ;
 import ij.ImageJ;
 import ij.ImagePlus;
@@ -15,10 +12,18 @@ import ij.gui.GenericDialog;
 import ij.plugin.filter.PlugInFilter;
 import ij.process.ImageProcessor;
 
-import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import components.FileChooserDemo2;
 import ij.io.Opener;
+
+import java.io.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.filechooser.*;
+
 
 /**
 * A template for processing each pixel of either
@@ -166,6 +171,25 @@ public class TestClass implements PlugInFilter {
 	}
 
 	/**
+     * Create the GUI and show it.  For thread safety,
+     * this method should be invoked from the
+     * event dispatch thread.
+     */
+    public static void createAndShowGUI() {
+        //Create and set up the window.
+        JFrame frame = new JFrame("FileChooserDemo2");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //Add content to the window.
+        frame.add(new FileChooserDemo2());
+
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
+    }
+	
+	
+	/**
 	 * Main method for debugging.
 	 *
 	 * For debugging, it is convenient to have a method that starts ImageJ, loads
@@ -212,6 +236,14 @@ public class TestClass implements PlugInFilter {
         	}
         }
         
-      
-	}
+       //Schedule a job for the event dispatch thread:
+       //creating and showing this application's GUI.
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                //Turn off metal's use of bold fonts
+                UIManager.put("swing.boldMetal", Boolean.FALSE);
+                createAndShowGUI();
+            }
+        });
+    }
 }
