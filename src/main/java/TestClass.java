@@ -3,8 +3,10 @@
  * GM 23/11/2022
  */
 
-import javax.swing.JOptionPane;
+import java.io.File;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import ij.IJ;
 import ij.ImageJ;
@@ -12,6 +14,11 @@ import ij.ImagePlus;
 import ij.gui.GenericDialog;
 import ij.plugin.filter.PlugInFilter;
 import ij.process.ImageProcessor;
+
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import ij.io.Opener;
 
 /**
 * A template for processing each pixel of either
@@ -175,17 +182,36 @@ public class TestClass implements PlugInFilter {
 		System.setProperty("plugins.dir", file.getAbsolutePath());
 
 		// start ImageJ
-		new ImageJ();
+		//new ImageJ();
 
-		String nom = JOptionPane.showInputDialog("Quel est ton nom ?");
-		String message = String.format("Salut %s. Java est cool, n'est ce pas ?", nom);
-       JOptionPane.showInternalMessageDialog(null,message);
+		String nom = JOptionPane.showInputDialog("Quel est le Directory ?");
+		String message = String.format("%s",nom);
+        JOptionPane.showInternalMessageDialog(null,message);
        
 		// open the Clown sample
-		ImagePlus image = IJ.openImage("http://imagej.net/images/clown.jpg");
-		image.show();
+		//ImagePlus image = IJ.openImage("http://imagej.net/images/clown.jpg");
+		//image.show();
 
 		// run the plugin
-		IJ.runPlugIn(clazz.getName(), "");
+		//IJ.runPlugIn(clazz.getName(), "");
+        
+        String directory = "C:\\Users\\Gérard Montarou\\Documents\\Analyse_Image\\NUCLEUS";
+        System.out.println(directory);
+        System.out.println(message);
+        File dir = new File(directory);
+        
+        File[] liste = dir.listFiles();
+        for(File item : liste) {
+        	if(item.isFile())
+        	{
+        		System.out.format("Nom du fichier: %s%n",item.getName());	
+        	}
+        	else if(item.isDirectory())
+        	{
+        		System.out.format("Nom du Repertoire: %s%n",item.getName());
+        	}
+        }
+        
+      
 	}
 }
